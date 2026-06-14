@@ -1,0 +1,409 @@
+cagr why only 3yrs, it should depend on the fund inception
+when you mention 0 for any of the level like say 0 midcap, do not suggest midcap fund firm to invest, and so on for any
+rebalancing plan must always be done in multiples of 10yrs, and remaining years at the end
+the rebalancing is not done properly, for a person aged 20 with 35yrs of investment this is the output
+"rebalancing_plan": [
+    {
+      "phase": "Years 1-11",
+      "equity": 50,
+      "midcap": 40,
+      "debt": 10
+    },
+    {
+      "phase": "Years 12-22",
+      "equity": 40,
+      "midcap": 40,
+      "debt": 20
+    },
+    {
+      "phase": "Years 23-33",
+      "equity": 30,
+      "midcap": 40,
+      "debt": 30
+    }
+  ]
+
+equity + midcap must both reduce as the age increase and the debt allocation should increase
+you should consider equity + midcap + smallcap must all be treated as equity allocation and dynamically risk adjusted as the age increases in the rebalancing
+
+for both mutual fund and crypto, you must have filters -> no negative investment (minimum investment must be in 1000, and in multiples of 100s) the risk should always be one of the three values "low" "medium" "high" (we will tune the ui for this)
+for either of the validation fail send an error message for the same
+
+_____
+
+
+in the crypt section, you should also reason out why fewer crypt alternatives are risky and not investible in the "risk_analysis": {
+    "volatility": "Very High",
+    "max_drawdown_1y": -40
+  } section
+
+why are we focused only on the 4 "allocation": {
+    "BTC": 30,
+    "ETH": 30,
+    "SOL": 30,
+    "Stablecoins": 10
+  },
+reason why only these 4, and not any others
+
+
+the top 3 mutual funds suggested must be dynamic to the amount, age and risk factor, you should not generate the same mutual funds for all combinations of these, optimise for few of these and generate accordingly
+
+_____
+Typograph
+You are acting as a senior frontend engineer and UI systems architect.
+
+I am building a professional fintech website with multiple pages (landing page, dashboard, portfolio recommendation pages, analytics sections, forms, charts, pricing sections, footer, navigation, etc).
+
+I want to completely refactor the typography system of the entire website so that ALL text elements across every page are controlled centrally through CSS classes and can be globally changed later by only editing font imports and font-family declarations.
+
+Your task is NOT to redesign the website.
+
+Your task is ONLY to restructure typography architecture.
+
+Follow these instructions extremely carefully.
+
+---
+
+GOAL:
+
+Create a semantic typography system where every text element in the website is classified by its FUNCTION and CONTEXT, not by arbitrary styling.
+
+I should later be able to change the entire website font system by modifying ONLY ONE CSS file.
+
+---
+
+STEP 1 — ANALYZE ENTIRE CODEBASE
+
+Scan ALL pages/components.
+
+Understand the CONTEXT of each text element before assigning classes.
+
+Do NOT blindly assign classes based on HTML tags.
+
+Example:
+
+* An h1 inside hero section is NOT the same as an h1 inside a card.
+* Small text in footer is NOT the same as small text under a graph.
+* A number showing investment return is NOT normal body text.
+* Graph axis labels are NOT paragraph text.
+* Dashboard metric percentages are NOT regular numbers.
+
+You must understand the purpose of the text.
+
+---
+
+STEP 2 — CREATE UNIVERSAL TYPOGRAPHY SYSTEM
+
+Create reusable semantic classes.
+
+Use ONLY these categories.
+
+Brand / Navigation
+
+.text-brand
+Website logo/company name
+
+.text-nav
+Navbar links
+
+.text-nav-active
+Currently active navigation item
+
+.text-breadcrumb
+Page location navigation
+
+---
+
+Hero Section
+
+.text-hero-title
+Main landing page headline
+
+.text-hero-subtitle
+Supporting hero description
+
+.text-hero-caption
+Small supporting text near hero content
+
+---
+
+Section Content
+
+.text-section-title
+Large section headings
+
+.text-section-subtitle
+Section subheading text
+
+.text-paragraph
+Normal descriptive content
+
+.text-highlight
+Highlighted important words
+
+---
+
+Cards / Components
+
+.text-card-title
+Feature card title
+
+.text-card-subtitle
+Supporting card text
+
+.text-card-metric
+Large numerical values inside cards
+
+.text-card-label
+Small labels inside cards
+
+---
+
+Forms
+
+.text-form-label
+Form labels
+
+.text-form-placeholder
+Input placeholder text
+
+.text-form-helper
+Helper or hint text
+
+.text-form-error
+Error messages
+
+.text-form-success
+Success confirmation text
+
+---
+
+Buttons
+
+.text-button-primary
+Primary CTA button text
+
+.text-button-secondary
+Secondary button text
+
+---
+
+Dashboard / Finance Metrics
+
+.text-metric-large
+Portfolio value
+
+.text-metric-medium
+Percentage growth values
+
+.text-metric-small
+Small financial values
+
+.text-currency
+Currency display values
+
+.text-profit
+Positive profit text
+
+.text-loss
+Negative loss text
+
+---
+
+Tables
+
+.text-table-header
+Table headings
+
+.text-table-row
+Normal table content
+
+.text-table-value
+Important financial values
+
+---
+
+Graphs / Charts
+
+.text-graph-title
+Chart title
+
+.text-axis-label
+Axis labels
+
+.text-chart-label
+Legend labels
+
+.text-chart-value
+Data values shown on charts
+
+---
+
+Lists
+
+.text-list-title
+List section title
+
+.text-list-item
+Normal list item text
+
+.text-list-caption
+Small helper text under lists
+
+---
+
+Footer
+
+.text-footer-title
+Footer headings
+
+.text-footer-link
+Footer navigation links
+
+.text-footer-text
+Copyright or legal text
+
+---
+
+Utility Text
+
+.text-caption
+Very small helper text
+
+.text-tag
+Tags/badges
+
+.text-tooltip
+Tooltip text
+
+.text-status
+Status indicator text
+
+---
+
+STEP 3 — MODIFY HTML/JSX/COMPONENTS
+
+Go through ALL pages.
+
+Replace old inconsistent typography classes.
+
+Assign semantic typography classes ONLY after understanding actual context.
+
+Do NOT assign classes based on tag names.
+
+Example:
+
+Wrong:
+
+All h2 → text-section-title
+
+Correct:
+
+h2 inside card → text-card-title
+
+h2 inside analytics section → text-section-title
+
+---
+
+STEP 4 — CENTRALIZE CSS
+
+Create ONE typography stylesheet.
+
+Example:
+
+typography.css
+
+This file should contain ALL font-family declarations.
+
+Example structure:
+
+.text-brand {
+font-family: var(--font-brand);
+}
+
+.text-hero-title {
+font-family: var(--font-heading);
+}
+
+.text-paragraph {
+font-family: var(--font-body);
+}
+
+.text-metric-large {
+font-family: var(--font-metric);
+}
+
+.text-footer-text {
+font-family: var(--font-footer);
+}
+
+---
+
+STEP 5 — GOOGLE FONT SYSTEM
+
+At the top of CSS file create variables ONLY.
+
+Example:
+
+:root {
+--font-brand: 'Space Grotesk', sans-serif;
+--font-heading: 'Orbitron', sans-serif;
+--font-body: 'Inter', sans-serif;
+--font-metric: 'IBM Plex Sans', sans-serif;
+--font-footer: 'Manrope', sans-serif;
+}
+
+All classes must use ONLY these variables.
+
+Never hardcode fonts directly inside classes.
+
+---
+
+STEP 6 — STRICT RULES
+
+DO NOT:
+
+* change website layout
+* change colors
+* change spacing
+* change margins
+* change animations
+* change functionality
+* change logic
+* delete components
+* alter responsiveness
+
+ONLY modify typography architecture.
+
+---
+
+IMPORTANT:
+
+You MUST understand meaning/context of text before assigning typography classes.
+
+Do not classify elements based only on HTML tag names.
+
+Context matters more than tags.
+
+Footer text, graph labels, dashboard numbers, hero text, and form text are all different semantic roles.
+
+---
+
+FINAL RESULT REQUIRED:
+
+1. Semantic typography classes added everywhere
+2. One centralized typography CSS file
+3. Entire website font system controllable by changing only font imports and CSS variables
+4. No other design or functionality changes
+
+Proceed carefully and analyze the full codebase before making changes.
+
+
+One extra suggestion: keep a dedicated file like src/styles/typography.css and never mix typography into component CSS again. Future font experiments become a 30-second swap.
+
+note that the purpose of doing this is to ease out font family changing across all heading family, all caption family, all main text family and so on as mentioned divisions, we will use google fonts by the import link 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+</style>
+
+i will mention the font mapping later, for now separate the sub section font families into headers and captions and body and etc as mentioned and then we will work on adding google fonts
